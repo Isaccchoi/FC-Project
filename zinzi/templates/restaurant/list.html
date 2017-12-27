@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <ul>
+                {% for rest in list %}
+                        <li>
+                            {{ rest.name }} - {{ rest.get_restaurant_type_display }}
+
+                        </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endblock %}
