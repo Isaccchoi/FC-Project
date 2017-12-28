@@ -6,6 +6,7 @@ import requests
 from django.conf import settings
 from django.db import models
 from django.db.models import Avg, Q
+from django.urls import reverse
 from django_google_maps import fields as map_fields
 from rest_framework.exceptions import ValidationError, ParseError
 from rest_framework.generics import get_object_or_404
@@ -119,6 +120,9 @@ class Restaurant(models.Model):
         if not self.strip_name:
             self.strip_name = self.name.replace(' ', '').lower()
         return super().save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return reverse('restaurants:detail:restaurant-detail', kwargs={'pk': self.pk})
 
     def get_favorites_count(self):
         return self.favorite_set.count()

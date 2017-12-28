@@ -1,16 +1,13 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div class="container">
-        <div class="row">
-            <ul>
-                {% for rest in list %}
-                        <li>
-                            {{ rest.name }} - {{ rest.get_restaurant_type_display }}
-
-                        </li>
-                {% endfor %}
-            </ul>
-        </div>
+    <div class="row">
+        <ul class="fa-list-ul" style="height: auto;">
+            {% for rest in list %}
+                <li>
+                    <a href="{{ rest.get_absolute_url }}">{{ rest.name }} - {{ rest.get_restaurant_type_display }}</a>
+                </li>
+            {% endfor %}
+        </ul>
     </div>
 {% endblock %}
